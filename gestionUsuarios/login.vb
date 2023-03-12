@@ -1,59 +1,61 @@
 ﻿Imports MySql.Data.MySqlClient
 
+Public Class Login
 
-Public Class login
-    Dim conexion As New MySqlConnection
-    Dim adaptador As New MySqlDataAdapter
-    Dim datos As New DataSet
+    Private _mySqlConnection As New MySqlConnection
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    'Este metodo se ejecuta la primera vez que se muestra esta vista.
+    Private Sub IniciarSesionVistaPrimeraAparicion(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            conexion.ConnectionString = "server=localhost;user=root;password=1234;database=gestion_usuarios"
-
-
-            conexion.Open()
-
+            Dim conexionbbdd = New ConexionBBDD
+            _mySqlConnection = conexionbbdd.EstablecerConexion()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox("Parece que ha ocurrido un error al establecer la conexión con la base de datos, por favor contacte con su Administrador.")
         End Try
-
     End Sub
 
-    Private Sub btn_Acceder_Click(sender As Object, e As EventArgs) Handles btn_Acceder.Click
-
-        Dim consulta As String
-        Dim lista As List(Of DataRow)
-        Dim comprobar_permisos As String 'para poner una pantalla distinta a administrador
-        Dim fecha_conexion As Date
-        Dim insertar_fechaconexion As String
-        fecha_conexion = Now.Date
-        Dim usuarioLogueado As DataRow
+    'Este metodo se ejecuta cuando se hace click el boton de inciar sesion.
+    Private Sub BotonIniciarSesionClicked(sender As Object, e As EventArgs) Handles btn_Acceder.Click
+        Dim _usarioLogueado As Usuario
+        Dim _fechaConexion = Now.Date
 
         If tb_correo.Text <> "" And tb_Contraseña.Text <> "" Then
-            consulta = "SELECT * FROM usuario where correo='" & tb_correo.Text & "'and contraseña='" & tb_Contraseña.Text & "'"
-            adaptador = New MySqlDataAdapter(consulta, conexion)
-            datos = New DataSet
+            Dim _queryObtencionUsario As String
+            Dim _listaDeFilasObtenidas As List(Of DataRow)
+
+            _queryObtencionUsario = "SELECT * FROM usuario where correo='" & tb_correo.Text & "'and userPassword='" & tb_Contraseña.Text & "'"
+            Dim adaptador = New MySqlDataAdapter(_queryObtencionUsario, _mySqlConnection)
+            Dim datos = New DataSet
+
             adaptador.Fill(datos, "usuario")
-            lista = datos.Tables("usuario").Rows.OfType(Of DataRow).ToList()
-            usuarioLogueado = lista.FirstOrDefault
+
+            _listaDeFilasObtenidas = datos.Tables("usuario").Rows.OfType(Of DataRow).ToList()
+
+            If _listaDeFilasObtenidas IsNot Nothing And _listaDeFilasObtenidas.Count = 1 Then
+                _usarioLogueado = New Usuario(_listaDeFilasObtenidas.FirstOrDefault)
+            End If
         End If
 
-        If usuarioLogueado IsNot Nothing Then
-            MsgBox("Bienvenido")
-            insertar_fechaconexion = "UPDATE usuario SET ult_fecha_conexion = '" & fecha_conexion.ToString("yyyy-MM-dd") & "' WHERE id_usuario = " + usuarioLogueado(0).ToString
-            Dim command = New MySqlCommand(insertar_fechaconexion, conexion)
-            Dim adap = New MySqlDataAdapter(command)
-            command.ExecuteNonQuery()
-            'Dim updateAdapter = New MySqlDataAdapter(insertar_fechaconexion, conexion)
+        If _usarioLogueado IsNot Nothing Then
+            Dim _queryInsertarFechaConexion As String
+            _queryInsertarFechaConexion = "UPDATE usuario SET ult_fecha_conexion  ='" & _fechaConexion.ToString("yyyy/MM/dd") & "' WHERE id_usuario = " + _usarioLogueado.IdUsuario.ToString()
 
+            Dim _comandoInsertarFecha = New MySqlCommand(_queryInsertarFechaConexion, _mySqlConnection)
+            Dim columnasAfectadas = _comandoInsertarFecha.ExecuteNonQuery()
+            If columnasAfectadas = 1 Then
+                If _usarioLogueado.Rol = Rol.administrador Then
+                    'GestionUsuarios.Show()
+                    MsgBox("ADMIN")
+                Else
+                    MsgBox("NO ADMIN")
+                End If
+            Else
+                MsgBox("Intentelo de nuevo")
+            End If
 
-            PantallaAdministrador.Show()
-        Else
-            MsgBox("Intentelo de nuevo")
         End If
-
-
 
     End Sub
+
 End Class
+
