@@ -27,12 +27,9 @@ Partial Class PantallaAdministrador
         Me.btn_Modificar = New System.Windows.Forms.Button()
         Me.btn_Eliminar = New System.Windows.Forms.Button()
         Me.btn_CerrarSesion = New System.Windows.Forms.Button()
-        Me.cmb_Tabla = New System.Windows.Forms.ComboBox()
-        Me.cmb_Campo = New System.Windows.Forms.ComboBox()
-        Me.OptIgual = New System.Windows.Forms.RadioButton()
-        Me.tb_DatoBusqueda = New System.Windows.Forms.TextBox()
         Me.btn_Consulta = New System.Windows.Forms.Button()
-        Me.tb_Select = New System.Windows.Forms.TextBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,40 +85,6 @@ Partial Class PantallaAdministrador
         Me.btn_CerrarSesion.Text = "Cerrar sesión"
         Me.btn_CerrarSesion.UseVisualStyleBackColor = False
         '
-        'cmb_Tabla
-        '
-        Me.cmb_Tabla.FormattingEnabled = True
-        Me.cmb_Tabla.Location = New System.Drawing.Point(24, 22)
-        Me.cmb_Tabla.Name = "cmb_Tabla"
-        Me.cmb_Tabla.Size = New System.Drawing.Size(121, 21)
-        Me.cmb_Tabla.TabIndex = 5
-        '
-        'cmb_Campo
-        '
-        Me.cmb_Campo.FormattingEnabled = True
-        Me.cmb_Campo.Location = New System.Drawing.Point(152, 22)
-        Me.cmb_Campo.Name = "cmb_Campo"
-        Me.cmb_Campo.Size = New System.Drawing.Size(121, 21)
-        Me.cmb_Campo.TabIndex = 6
-        '
-        'OptIgual
-        '
-        Me.OptIgual.AutoSize = True
-        Me.OptIgual.Location = New System.Drawing.Point(279, 26)
-        Me.OptIgual.Name = "OptIgual"
-        Me.OptIgual.Size = New System.Drawing.Size(48, 17)
-        Me.OptIgual.TabIndex = 7
-        Me.OptIgual.TabStop = True
-        Me.OptIgual.Text = "LIKE"
-        Me.OptIgual.UseVisualStyleBackColor = True
-        '
-        'tb_DatoBusqueda
-        '
-        Me.tb_DatoBusqueda.Location = New System.Drawing.Point(330, 22)
-        Me.tb_DatoBusqueda.Name = "tb_DatoBusqueda"
-        Me.tb_DatoBusqueda.Size = New System.Drawing.Size(332, 20)
-        Me.tb_DatoBusqueda.TabIndex = 8
-        '
         'btn_Consulta
         '
         Me.btn_Consulta.BackColor = System.Drawing.Color.SteelBlue
@@ -132,24 +95,31 @@ Partial Class PantallaAdministrador
         Me.btn_Consulta.Text = "Buscar"
         Me.btn_Consulta.UseVisualStyleBackColor = False
         '
-        'tb_Select
+        'ComboBox1
         '
-        Me.tb_Select.Location = New System.Drawing.Point(24, 63)
-        Me.tb_Select.Name = "tb_Select"
-        Me.tb_Select.Size = New System.Drawing.Size(638, 20)
-        Me.tb_Select.TabIndex = 10
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(24, 38)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox1.TabIndex = 10
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(24, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Label1"
         '
         'PantallaAdministrador
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(796, 500)
-        Me.Controls.Add(Me.tb_Select)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.btn_Consulta)
-        Me.Controls.Add(Me.tb_DatoBusqueda)
-        Me.Controls.Add(Me.OptIgual)
-        Me.Controls.Add(Me.cmb_Campo)
-        Me.Controls.Add(Me.cmb_Tabla)
         Me.Controls.Add(Me.btn_CerrarSesion)
         Me.Controls.Add(Me.btn_Eliminar)
         Me.Controls.Add(Me.btn_Modificar)
@@ -168,10 +138,7 @@ Partial Class PantallaAdministrador
     Friend WithEvents btn_Modificar As Button
     Friend WithEvents btn_Eliminar As Button
     Friend WithEvents btn_CerrarSesion As Button
-    Friend WithEvents cmb_Tabla As ComboBox
-    Friend WithEvents cmb_Campo As ComboBox
-    Friend WithEvents OptIgual As RadioButton
-    Friend WithEvents tb_DatoBusqueda As TextBox
     Friend WithEvents btn_Consulta As Button
-    Friend WithEvents tb_Select As TextBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents Label1 As Label
 End Class

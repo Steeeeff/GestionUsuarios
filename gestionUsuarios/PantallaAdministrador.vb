@@ -41,7 +41,7 @@ Public Class PantallaAdministrador
         Dim salir As MsgBoxResult
         salir = MsgBox("Se va a borrar el usuario " + usuarioParaBorrar.Nombre + " ¿Desea continuar?", MsgBoxStyle.YesNo)
         If salir = MsgBoxResult.Yes Then
-            Close()
+            Hide()
             Login.Show()
 
             Dim _comandoInsertarFecha = New MySqlCommand(_queryInsertarFechaConexion, _mySqlConnection)
@@ -60,7 +60,8 @@ Public Class PantallaAdministrador
         Dim currentRow = DataGridUsuarios.CurrentRow.Index
         Dim usuarioEditar = New Usuario(_tablaUsuarios.Rows(currentRow))
         Dim pantallaModificar = New PantallaEdicionUsuario With {
-            .Usuario = usuarioEditar
+            .Usuario = usuarioEditar,
+            .UsuarioLogueado = Usuario
         }
         Hide()
         pantallaModificar.Show()
@@ -76,6 +77,5 @@ Public Class PantallaAdministrador
         adaptador.Fill(_tablaUsuarios)
         DataGridUsuarios.DataSource = _tablaUsuarios
     End Sub
-
 
 End Class

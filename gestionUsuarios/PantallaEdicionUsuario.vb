@@ -4,6 +4,7 @@ Imports MySql.Data.MySqlClient
 Public Class PantallaEdicionUsuario
     'La instancia del usuario logueado previamente
     Public Usuario As Usuario
+    Public UsuarioLogueado As Usuario
     Private _mySqlConnection As MySqlConnection
 
     'La carga de los datos del usuario logueado
@@ -50,7 +51,7 @@ Public Class PantallaEdicionUsuario
     Private Sub AbrirPantallaAdministracion()
         Hide()
         Dim pantallaAdministrador = New PantallaAdministrador()
-        pantallaAdministrador.Usuario = Usuario
+        pantallaAdministrador.Usuario = UsuarioLogueado
         pantallaAdministrador.Show()
     End Sub
 
