@@ -36,6 +36,7 @@ Partial Class Login
         Me.tb_correo.Name = "tb_correo"
         Me.tb_correo.Size = New System.Drawing.Size(136, 20)
         Me.tb_correo.TabIndex = 0
+        Me.tb_correo.Text = "David"
         '
         'tb_Contraseña
         '
@@ -44,6 +45,7 @@ Partial Class Login
         Me.tb_Contraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.tb_Contraseña.Size = New System.Drawing.Size(136, 20)
         Me.tb_Contraseña.TabIndex = 1
+        Me.tb_Contraseña.Text = "1234"
         '
         'btn_Acceder
         '
@@ -83,7 +85,7 @@ Partial Class Login
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Contraseña"
         '
-        'login
+        'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -94,7 +96,7 @@ Partial Class Login
         Me.Controls.Add(Me.btn_Acceder)
         Me.Controls.Add(Me.tb_Contraseña)
         Me.Controls.Add(Me.tb_correo)
-        Me.Name = "login"
+        Me.Name = "Login"
         Me.Text = "Login"
         Me.ResumeLayout(False)
         Me.PerformLayout()

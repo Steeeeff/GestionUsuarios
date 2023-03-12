@@ -43,18 +43,38 @@ Public Class Login
             Dim _comandoInsertarFecha = New MySqlCommand(_queryInsertarFechaConexion, _mySqlConnection)
             Dim columnasAfectadas = _comandoInsertarFecha.ExecuteNonQuery()
             If columnasAfectadas = 1 Then
-                If _usarioLogueado.Rol = Rol.administrador Then
-                    'GestionUsuarios.Show()
-                    MsgBox("ADMIN")
+                If _usarioLogueado.Rol = Rol.usuario Then
+                    AbrirPantallaDeUsuario(_usarioLogueado)
                 Else
-                    MsgBox("NO ADMIN")
+                    AbrirPantallaDeAdministracion(_usarioLogueado)
                 End If
             Else
                 MsgBox("Intentelo de nuevo")
             End If
 
+        Else
+            MsgBox("El usuario no se encuentra en la base de datos.")
         End If
+    End Sub
 
+    Private Sub AbrirPantallaDeUsuario(usuario As Usuario)
+        Dim pantallaUsuario = New PantallaUsuario With {
+            .Usuario = usuario
+        }
+        pantallaUsuario.Show()
+        tb_Contraseña.Clear()
+        tb_correo.Clear()
+        Hide()
+    End Sub
+
+    Private Sub AbrirPantallaDeAdministracion(usuario As Usuario)
+        Dim pantallaDeAdministracion = New PantallaAdministrador With {
+            .Usuario = usuario
+        }
+        pantallaDeAdministracion.Show()
+        tb_Contraseña.Clear()
+        tb_correo.Clear()
+        Hide()
     End Sub
 
 End Class

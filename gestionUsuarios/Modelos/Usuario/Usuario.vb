@@ -9,6 +9,9 @@ Public Class Usuario
     Public Rol As Rol
     Public UtilmaFechaConexion As String
     Public Borrado As Boolean
+    Public Importe As Int32
+    Public Pagado As Boolean
+
 
     Public Sub New(ByVal dataRow As DataRow)
         IdUsuario = dataRow(0)
@@ -19,6 +22,8 @@ Public Class Usuario
         Rol = [Enum].Parse(GetType(Rol), dataRow(5))
         UtilmaFechaConexion = dataRow(6)
         Borrado = dataRow(7)
+        Importe = dataRow(8)
+        Pagado = dataRow(9)
     End Sub
 
 End Class

@@ -138,6 +138,12 @@
     <Compile Include="PantallaAdministrador.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PantallaEdicionUsuario.Designer.vb">
+      <DependentUpon>PantallaEdicionUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PantallaEdicionUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PantallaUsuario.Designer.vb">
       <DependentUpon>PantallaUsuario.vb</DependentUpon>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaAdministrador.resx">
       <DependentUpon>PantallaAdministrador.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PantallaEdicionUsuario.resx">
+      <DependentUpon>PantallaEdicionUsuario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaUsuario.resx">
       <DependentUpon>PantallaUsuario.vb</DependentUpon>

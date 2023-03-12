@@ -22,7 +22,7 @@ Partial Class PantallaAdministrador
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGridUsuarios = New System.Windows.Forms.DataGridView()
         Me.btn_Añadir = New System.Windows.Forms.Button()
         Me.btn_Modificar = New System.Windows.Forms.Button()
         Me.btn_Eliminar = New System.Windows.Forms.Button()
@@ -33,16 +33,20 @@ Partial Class PantallaAdministrador
         Me.tb_DatoBusqueda = New System.Windows.Forms.TextBox()
         Me.btn_Consulta = New System.Windows.Forms.Button()
         Me.tb_Select = New System.Windows.Forms.TextBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridUsuarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'DataGridUsuarios
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(24, 130)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(638, 345)
-        Me.DataGridView1.TabIndex = 0
+        Me.DataGridUsuarios.AllowUserToAddRows = False
+        Me.DataGridUsuarios.AllowUserToDeleteRows = False
+        Me.DataGridUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridUsuarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter
+        Me.DataGridUsuarios.Location = New System.Drawing.Point(24, 130)
+        Me.DataGridUsuarios.Name = "DataGridUsuarios"
+        Me.DataGridUsuarios.ReadOnly = True
+        Me.DataGridUsuarios.Size = New System.Drawing.Size(638, 345)
+        Me.DataGridUsuarios.TabIndex = 0
         '
         'btn_Añadir
         '
@@ -150,16 +154,16 @@ Partial Class PantallaAdministrador
         Me.Controls.Add(Me.btn_Eliminar)
         Me.Controls.Add(Me.btn_Modificar)
         Me.Controls.Add(Me.btn_Añadir)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DataGridUsuarios)
         Me.Name = "PantallaAdministrador"
         Me.Text = "PantallaAdministrador"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridUsuarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGridUsuarios As DataGridView
     Friend WithEvents btn_Añadir As Button
     Friend WithEvents btn_Modificar As Button
     Friend WithEvents btn_Eliminar As Button
